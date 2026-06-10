@@ -176,6 +176,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);
     pointer-events:all!important;page-break-after:always;height:100vh}
   html,body{overflow:visible}
 }
+.zoom-hint{font-size:10px;color:rgba(255,255,255,0.35);text-align:right;flex-shrink:0;padding:0 2px 2px;letter-spacing:0.5px;}
 </style>
 </head>
 <body>
@@ -627,6 +628,14 @@ document.getElementById('progress').style.width = ((1 / TOTAL) * 100) + '%';
 
 </div>
 
+<script>
+document.querySelectorAll('[data-lb-group]').forEach(function(img){
+  var b=document.createElement('div');
+  b.innerHTML='&#128269; Click to zoom';
+  b.style.cssText='position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.6);color:#fff;font-size:10px;padding:3px 10px;border-radius:10px;pointer-events:none;z-index:2;letter-spacing:0.3px;';
+  img.parentNode.appendChild(b);
+});
+</script>
 <!-- ═══ LIGHTBOX ══════════════════════════════════════════════════════════ -->
 <div id="lb" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:9999;flex-direction:column;align-items:center;justify-content:center" onclick="if(event.target===this||event.target.id==='lb')lbClose()">
   <div onclick="lbClose()" style="position:absolute;top:18px;right:28px;color:#fff;font-size:34px;font-weight:200;cursor:pointer;line-height:1;z-index:3">&#x2715;</div>
